@@ -7,7 +7,17 @@ gem 'rails', '3.2.0'
 
 gem 'sqlite3'
 
+# A gem to let us use decorators/view models
 gem "draper"
+
+# To use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Gems for authentication
+gem 'omniauth-twitter'  
+gem 'omniauth-facebook'  
+gem 'omniauth-google-oauth2'  
+gem 'omniauth-identity'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,8 +51,6 @@ group :test do
   gem "factory_girl_rails"
 end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

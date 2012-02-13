@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.6)
     arel (3.0.0)
+    bcrypt-ruby (3.0.1)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -77,6 +78,10 @@ GEM
     factory_girl_rails (1.6.0)
       factory_girl (~> 2.5.0)
       railties (>= 3.0.0)
+    faraday (0.7.6)
+      addressable (~> 2.2)
+      multipart-post (~> 1.1)
+      rack (~> 1.1)
     ffi (1.0.11)
     gherkin (2.7.6)
       json (>= 1.4.6)
@@ -95,6 +100,7 @@ GEM
     guard-spork (0.5.1)
       guard (>= 0.10.0)
       spork (>= 0.8.4)
+    hashie (1.2.0)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.0)
@@ -110,7 +116,30 @@ GEM
     method_source (0.7.0)
     mime-types (1.17.2)
     multi_json (1.0.4)
+    multipart-post (1.1.4)
     nokogiri (1.5.0)
+    oauth (0.4.5)
+    oauth2 (0.5.2)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
+    omniauth (1.0.2)
+      hashie (~> 1.2)
+      rack
+    omniauth-facebook (1.2.0)
+      omniauth-oauth2 (~> 1.0.0)
+    omniauth-google-oauth2 (0.1.9)
+      omniauth (~> 1.0)
+      omniauth-oauth2
+    omniauth-identity (1.0.0)
+      omniauth (~> 1.0)
+    omniauth-oauth (1.0.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.0.0)
+      oauth2 (~> 0.5.0)
+      omniauth (~> 1.0)
+    omniauth-twitter (0.0.7)
+      omniauth-oauth (~> 1.0)
     polyglot (0.3.3)
     pry (0.9.8)
       coderay (~> 1.0.5)
@@ -191,6 +220,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
@@ -202,6 +232,10 @@ DEPENDENCIES
   guard-rspec
   guard-spork
   jquery-rails
+  omniauth-facebook
+  omniauth-google-oauth2
+  omniauth-identity
+  omniauth-twitter
   pry
   rails (= 3.2.0)
   rspec-rails
