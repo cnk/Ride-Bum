@@ -1,8 +1,12 @@
 RideBum::Application.routes.draw do
+  root to: "pages#index"
+
+  match "dashboard" => "dashboard#index"
+
   resources :events
 
-  get "dashboard/index"
-
+  match "/auth/:provider/callback" => "sessions#create"
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -16,8 +20,6 @@ RideBum::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  root to: "pages#index"
-  match "dashboard" => "dashboard#index"
 
   # Sample resource route with options:
   #   resources :products do

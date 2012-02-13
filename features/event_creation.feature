@@ -12,6 +12,6 @@ Feature: Event planner creates event
         And he enters the destination "1600 Pennsylvania Ave. Washington, DC"
         And he enters the name "Graveyard pitstop"
         And he enters the start date and time "2012-01-26 00:00:00"
-        And he clicks on "Create"
+        And he clicks on "Create Event"
         Then he sees "The event was created"
         And he is on the "Graveyard pitstop" event page
