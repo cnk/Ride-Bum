@@ -12,7 +12,12 @@ Feature: Sign in with various authentication providers
     When he goes to the home page
     And he clicks on "Create an account"
     Then he registers with name "John Doe" and email "jdoe@example.com"
-    # And then it doesn't really show what happens
+    Then he sees "Signed in!"
   
-
-
+  Scenario: Sign in with a local account
+    Given there is a local user with email "jdoe@example.com"
+    And he is not logged in
+    When he goes to the home page
+    And he clicks on "Sign In" 
+    Then he fills in email "jdoe@example.com" and password "password"  
+    Then he sees "Signed in!"

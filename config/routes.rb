@@ -5,8 +5,13 @@ RideBum::Application.routes.draw do
 
   resources :events
 
+  match "/login", to: "sessions#new", :as => "login"  
   match "/auth/:provider/callback" => "sessions#create"
- 
+  match "/auth/failure", to: "sessions#failure"  
+  match "/logout", to: "sessions#destroy", :as => "logout"  
+
+  resources :identities
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

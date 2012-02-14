@@ -25,6 +25,20 @@ When /^he registers with name "([^"]*)" and email "([^"]*)"$/ do |name, email|
   fill_in "Name", with: name
   fill_in "Email", with: email
   fill_in "Password", with: "passsword"
-  fill_in "Confirm Password", with: "passsword"
-  click_button "Connect"
+  fill_in "Password confirmation", with: "passsword"
+  click_button "Register"
+end
+
+Then /^he fills in email "([^"]*)" and password "([^"]*)"$/ do |email, password|
+  fill_in "auth_key", with: email
+  fill_in "password", with: password
+  click_button "Login"
+end
+
+Given /^there is a local user with email "([^"]*)"$/ do |email|
+  FactoryGirl.create(:local_user, email: email)
+end
+
+Given /^he is not logged in$/ do
+  # session[:user_id] = nil
 end

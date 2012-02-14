@@ -9,9 +9,12 @@
 <body>
 
 <div id="signin">
-  <%= link_to "Create an account", "/auth/identity/register" %>
+  <%= link_to "Create an account", new_identity_path %>
+  <%= link_to "Sign In", login_path %>
 </div>
 
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 <%= yield %>
 
 </body>
