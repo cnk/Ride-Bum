@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :event do
     name "MyString"
     destination "MyString"
-    arrival_time "2012-02-08 20:06:34"
+    arrival_time { 30.days.from_now }
   end
 end
