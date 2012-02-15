@@ -18,12 +18,13 @@ FactoryGirl.define do
   factory :local_user, :class => User do
     # For convenience, I want to pass identity configuration to local_user
     ignore do
-      name "Jane Roe"
-      sequence(:email)        {|n| "user#{n}@example.org" }
+      sequence(:email)    {|n| "user#{n}@example.org" }
+      identity            {FactoryGirl.create(:identity, :name => name, :email => email)}
     end
 
-    provider   "identity"
-    uid         {FactoryGirl.create(:identity, :name => name, :email => email).id}
+    provider    "identity"
+    uid         {identity.id}
+    name        "Local User"
   end
   
   factory :identity do
