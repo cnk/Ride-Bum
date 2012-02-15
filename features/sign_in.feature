@@ -18,6 +18,15 @@ Feature: Sign in with various authentication providers
     Given there is a local user with email "jdoe@example.com"
     And he is not logged in
     When he goes to the home page
-    And he clicks on "Sign In" 
+    #And he clicks on "Sign In" 
     Then he fills in email "jdoe@example.com" and password "password"  
     Then he sees "Signed in!"
+
+   Scenario: Twitter link appears on the front page
+      Given a non-logged-in user
+      And he is not logged in
+      When he goes to the home page
+      And he clicks on "Twitter"
+      Then he sees "Signed in!"
+      
+   

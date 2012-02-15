@@ -8,10 +8,7 @@
 </head>
 <body>
 
-<div id="signin">
-  <%= link_to "Create an account", new_identity_path %>
-  <%= link_to "Sign In", login_path %>
-</div>
+<%= render :partial => "layouts/login_links" %>
 
 <p id="notice"><%= notice %></p>
 <p id="alert"><%= alert %></p>
