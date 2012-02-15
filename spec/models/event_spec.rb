@@ -11,5 +11,8 @@ describe Event do
     it "should require arrival time" do
       Factory.build(:event, arrival_time: nil).should_not be_valid
     end
+    it "should create a valid event" do
+      Factory.build(:event).should be_valid
+    end
   end
 end
