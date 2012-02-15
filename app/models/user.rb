@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  validates :name, presence: true
+  validates :uid, presence: true
+  validates :provider, presence: true
 
   def self.from_omniauth(auth)
     find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)

@@ -3,9 +3,16 @@ FactoryGirl.define do
     # ??
   end
 
+  factory :user, :class => User do
+    provider        "identity"
+    sequence(:uid)  {|n| "#{n}"} 
+    name            "Basic User"
+  end
+
   factory :google_user, :class => User do
     provider        "google"
     sequence(:uid)  {|n| "#{n}"} 
+    name            "Google User"
   end
   
   factory :local_user, :class => User do
