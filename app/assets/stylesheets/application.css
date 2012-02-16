@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
 */
+
+#login_links {
+  float: right;
+  list-style: none;
+}
+
+#login_links li {
+  display: inline;
+}

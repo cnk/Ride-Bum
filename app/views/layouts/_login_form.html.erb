@@ -1,11 +1,3 @@
-<p>
-   <%= link_to "Twitter", "/auth/twitter"%>
-</p>
-<p>  
-  <strong>Don't use these services?</strong>  
-  <%= link_to "Create an account", "/auth/identity/register" %> or login below.  
-</p>  
-    
 <%= form_tag "/auth/identity/callback" do %>  
   <div class="field">  
     <%= label_tag :auth_key, "Email" %><br>  
