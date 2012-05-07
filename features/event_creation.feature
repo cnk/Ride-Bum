@@ -5,8 +5,7 @@ Feature: Event planner creates event
 
 
     Scenario:
-        Given "George" is an event planner
-        And he is logged in
+        Given "George" is logged in as an event planner
         And he is on his dashboard page
         When he clicks on "Create an event"
         And he enters the destination "1600 Pennsylvania Ave. Washington, DC"

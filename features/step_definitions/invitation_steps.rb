@@ -28,7 +28,10 @@ Given /^the event has the following invitees:$/ do |table|
 end
 
 Given /^no invitation emails have been sent out$/ do
-  pass
+  Invitation.all.each do |invitation|
+    invitation.email_sent = false
+    invitation.save
+  end
 end
 
 Given /^they have already received email invitations$/ do

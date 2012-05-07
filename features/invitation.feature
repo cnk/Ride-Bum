@@ -4,8 +4,7 @@ Feature: event planner invites potential attendees
     In order to have them come to my event
 
     Background:
-        Given "George" is an event planner
-        And he is logged in
+        Given "George" is logged in as an event planner
         And there is a "Graveyard pitstop" event
         And he is on the "Graveyard pitstop" event page
 

@@ -1,7 +1,4 @@
 FactoryGirl.define do
-  factory :event_planner do
-    # ??
-  end
   factory :event do
     name "MyString"
     destination "MyString"

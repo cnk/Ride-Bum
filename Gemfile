@@ -20,12 +20,12 @@ group :development do
   gem "pry-rails"
 end
 
-group :test, :development do
+group :test, :cucumber, :development do
   gem "rspec-rails"
   gem "cucumber-rails"
 end
 
-group :test do
+group :test, :cuucmber do
   gem "database_cleaner"
   gem "spork"
   gem "guard-rspec"
