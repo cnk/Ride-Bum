@@ -7,8 +7,7 @@ RideBum::Application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions" }
   root to: "pages#index"
-  match "dashboard" => "dashboard#index"
 
 end

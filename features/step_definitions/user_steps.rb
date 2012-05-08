@@ -15,7 +15,7 @@ Given /^he is not logged in$/ do
 end
 
 Given /^he is on his dashboard page$/ do
-  visit dashboard_path
+  visit events_path
 end
 
 When /^he fills out the new user form$/ do

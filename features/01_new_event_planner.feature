@@ -8,5 +8,5 @@ Feature: Person signs up as an event planner
 	Then he sees information about Ride Bum
 	When he clicks on "Sign up" 
 	And he fills out the new user form
-	And he sees "Welcome to Ride Bum"
+	And he sees "Listing events"
 	And he sees "You have signed up successfully."
