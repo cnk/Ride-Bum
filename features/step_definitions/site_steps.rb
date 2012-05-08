@@ -1,4 +1,4 @@
-When /^a person goes to the home page$/ do
+When /^a person|he goes to the home page$/ do
   visit root_path
 end
 

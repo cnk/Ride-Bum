@@ -1,5 +1,5 @@
 Given /^"([^"]*)" is an event planner$/ do |event_planner_name|
-  @user = Factory(:user, username: event_planner_name)
+  @user = FactoryGirl.create(:user, username: event_planner_name)
 end
 
 Given /^"([^"]*)" is logged in as an event planner$/ do |event_planner_name|
