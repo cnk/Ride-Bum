@@ -10,3 +10,6 @@ Then /^he sees "([^"]*)"$/ do |text|
   page.should have_content(text)
 end
 
+Then /^he should not see "([^"]*)"$/ do |text|
+  page.should_not have_content(text)
+end

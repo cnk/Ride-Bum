@@ -6,7 +6,7 @@ Given /^"([^"]*)" is logged in as an event planner$/ do |event_planner_name|
   @user = Factory(:user, username: event_planner_name)
   visit '/users/sign_in'
   fill_in "user_login", :with=>@user.login
-  fill_in "user_password", :with=>"password"
+  fill_in "user_password", :with=>"abc123"
   click_button "Sign in"
 end
 
@@ -21,8 +21,8 @@ end
 When /^he fills out the new user form$/ do
   steps %Q{And he fills in "Username" with "gw"
   And he fills in "Email" with "gw@example.com"
-  And he fills in "Password" with "password"
-  And he fills in "Password confirmation" with "password"
+  And he fills in "Password" with "abc123"
+  And he fills in "Password confirmation" with "abc123"
   And he submits the sign up form}
 end
 

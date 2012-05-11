@@ -1,3 +1,17 @@
+Given /^he is on the "([^"]*)" event page$/ do |event_name|
+  visit event_path(Event.find_by_name(event_name))
+end
+
+Given /^there is a "([^"]*)" event$/ do |event_name|
+  @event = FactoryGirl.create(:event, name: event_name)
+end
+
+Given /^he has created the "([^"]*)" event$/ do |event_name|
+  @event = FactoryGirl.create(:event, name: event_name)
+puts "Create event without owner until we add user_id to events table"
+#  @event = FactoryGirl.create(:event, name: event_name, user: @user)
+end
+
 When /^he enters the destination "([^"]*)"$/ do |destination|
   fill_in "Destination", with: destination
 end
