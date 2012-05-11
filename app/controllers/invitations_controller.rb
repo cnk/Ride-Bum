@@ -24,7 +24,8 @@ class InvitationsController < ApplicationController
   # GET /invitations/new
   # GET /invitations/new.json
   def new
-    @invitation = Invitation.new(event: Event.find(params[:event_id]), user: User.new)
+    @event = Event.find(params[:event_id])
+    @invitation = Invitation.new(event: @event, user: User.new)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
-        format.html { redirect_to new_event_invitation_path(@invitation.event, Invitation.new(event: @invitation.event)), notice: "#{@invitation.user.username} has been added" }
+        format.html { redirect_to event_path(@invitation.event), notice: "#{@invitation.user.username} has been added" }
         format.json { render json: @invitation, status: :created, location: @invitation }
       else
         format.html { render action: "new" }

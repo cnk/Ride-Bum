@@ -2,23 +2,41 @@ require 'spec_helper'
 
 describe "events/index" do
   before(:each) do
-    assign(:events, [
-      stub_model(Event,
-        :name => "Name",
-        :destination => "Destination"
-      ),
-      stub_model(Event,
-        :name => "Name",
-        :destination => "Destination"
-      )
-    ])
+      @event = stub_model(Event,
+                          :name => "Name",
+                          :destination => "Destination"
+                          )
+    @another = stub_model(Event,
+                          :name => "Name",
+                          :destination => "Destination"
+                          )
+    assign(:events, [@event, @another])
   end
 
   it "renders a list of events" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Name".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Destination".to_s, :count => 2
   end
+
+  it "has a link show an event's details" do
+    render
+    assert_select "a[href=?]", event_path(@event)
+  end
+
+  it "has a link edit the event" do
+    render
+    assert_select "a[href=?]", edit_event_path(@event), :text => "Edit"
+  end
+
+  it "has a link delete the event" do
+    render
+    assert_select "a[href=/events/#{@event.id}]", :method => 'delete', :text => "Delete"
+  end
+
+  it "has a link add a new event" do
+    render
+    assert_select "a[href=?]", new_event_path(), :text => "New Event"
+  end
+
 end

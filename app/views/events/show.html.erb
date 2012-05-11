@@ -15,7 +15,7 @@
   <%= @event.arrival_time %>
 </p>
 
-<%= link_to "Enter Guests", new_event_invitation_path(@event, Invitation.new(event: @event)) %>
-
+<%= link_to "Enter Guests", new_event_invitation_path(@event, Invitation.new(event: @event)) %> |
+<%= link_to 'Send email to all invitees', send_emails_event_invitations_path(@event) %><br />
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
