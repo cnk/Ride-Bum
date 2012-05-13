@@ -29,6 +29,7 @@ describe EventsController do
   
   describe "GET index" do
     it "assigns all events as @events" do
+      login_user
       event = FactoryGirl.create(:event)
       get :index
       assigns(:events).should eq([event])
@@ -37,6 +38,7 @@ describe EventsController do
 
   describe "GET show" do
     it "assigns the requested event as @event" do
+      login_user
       event = FactoryGirl.create(:event)
       get :show, {:id => event.to_param}
       assigns(:event).should eq(event)
