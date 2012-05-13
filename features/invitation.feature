@@ -13,13 +13,13 @@ Feature: event planner invites potential attendees
         And he fills in "Name" with "Rob Zombie"
         And he fills in "Email" with "rob@zombie.com"
         And he fills in "Phone" with "9876543210"
-        And he clicks "Add"
+        And he clicks "Create Invitation"
         Then he should see "Rob Zombie has been added"
         When he clicks on "Enter Guests"
         And he fills in "Name" with "Greg Zombie"
         And he fills in "Email" with "greg@zombie.com"
         And he fills in "Phone" with "9876543211"
-        And he clicks "Add"
+        And he clicks "Create Invitation"
         And he should see "Greg Zombie has been added"
 
     Scenario: initial email invitations
@@ -52,7 +52,7 @@ Feature: event planner invites potential attendees
         And he fills in "Name" with "Sarah Zombie"
         And he fills in "Email" with "sarah@zombie.com"
         And he fills in "Phone" with "9876543212"
-        And he clicks "Add"
+        And he clicks "Create Invitation"
         Then he should see "Sarah Zombie has been added"
         When he clicks on "Send email to all invitees"
         Then "rob@zombie.com" should receive no email

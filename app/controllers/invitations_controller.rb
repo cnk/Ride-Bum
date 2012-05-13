@@ -2,7 +2,8 @@ class InvitationsController < ApplicationController
   # GET /invitations
   # GET /invitations.json
   def index
-    @invitations = Invitation.all
+    @event = Event.find(params[:event_id])
+    @invitations = @event.invitations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,7 @@ class InvitationsController < ApplicationController
   # GET /invitations/1
   # GET /invitations/1.json
   def show
-    @invitation = Invitation.find(params[:id])
+    @invitation = Invitation.find(params[:id], include: :event )
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +26,7 @@ class InvitationsController < ApplicationController
   # GET /invitations/new.json
   def new
     @event = Event.find(params[:event_id])
-    @invitation = Invitation.new(event: @event, user: User.new)
+    @invitation = Invitation.new(event_id: @event.id, user: User.new)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +42,8 @@ class InvitationsController < ApplicationController
   # POST /invitations
   # POST /invitations.json
   def create
-    @invitation = Invitation.new(params[:invitation])
+    @invitation = Invitation.new(event_id: params[:invitation][:event_id].to_i)
+    @invitation.user = User.new(params[:invitation][:user_attributes])
 
     respond_to do |format|
       if @invitation.save
@@ -60,7 +62,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find(params[:id])
 
     respond_to do |format|
-      if @invitation.update_attributes(params[:invitation])
+      if @invitation.user.update_attributes(params[:invitation][:user_attributes])
         format.html { redirect_to @invitation, notice: 'Invitation was successfully updated.' }
         format.json { head :no_content }
       else

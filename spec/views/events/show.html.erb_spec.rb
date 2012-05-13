@@ -2,21 +2,17 @@ require 'spec_helper'
 
 describe "events/show" do
   before(:each) do
-    @event = assign(:event, stub_model(Event,
-                                       :name => "Name",
-                                       :destination => "Destination"))
+    @event = FactoryGirl.create(:event)
   end
 
-  it "renders attributes in <p>" do
+  it "renders attributes" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Name/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Destination/)
   end
 
   it "has a link back to the event list page" do
-     render
+    render
     assert_select "a[href=?]", events_path
   end
 

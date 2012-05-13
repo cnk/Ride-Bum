@@ -1,24 +1,24 @@
 
 <p>
   <b>Invitee name:</b>
-  <%= @invitation.invitee_name %>
+  <%= @invitation.user.username %>
 </p>
 
 <p>
   <b>Invitee email:</b>
-  <%= @invitation.invitee_email %>
+  <%= @invitation.user.email %>
 </p>
 
 <p>
   <b>Invitee phone:</b>
-  <%= @invitation.invitee_phone %>
+  <%= @invitation.user.phone %>
 </p>
 
 <p>
   <b>Event:</b>
-  <%= @invitation.event_id %>
+  <%= link_to @invitation.event.name, event_path(@invitation.event) %>
 </p>
 
 
-<%= link_to 'Edit', edit_invitation_path(@invitation) %> |
-<%= link_to 'Back', invitations_path %>
+<%= link_to 'Edit', edit_invitation_path(@invitation) %> 
+

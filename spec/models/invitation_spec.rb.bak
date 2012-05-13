@@ -1,0 +1,16 @@
+require 'spec_helper'
+
+describe Invitation do
+  context "Required fields" do
+    it "should require event" do
+      invitation_without_event = FactoryGirl.build(:invitation, event_id: nil)
+      invitation_without_event.should_not be_valid
+      invitation_without_event.errors.should have_key(:event_id)
+    end
+    it "should require invitee" do
+      invitation_without_invitee = FactoryGirl.build(:invitation, user_id: nil)
+      invitation_without_invitee.should_not be_valid
+      invitation_without_invitee.errors.should have_key(:user_id)
+    end
+  end
+end
