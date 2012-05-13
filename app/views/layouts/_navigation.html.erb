@@ -13,18 +13,20 @@
 	</ul>
 	
 	<% if not signed_in? %>
-	<div class="signin_form">
-	  <%= form_for("user", url: user_session_path, class: "form-inline") do |f| %>
-	  <%= f.text_field :login %>
-	  <%= f.password_field :password %>
-	  <%= f.submit "Log in", id: "submit_button"%>
+	  <% if !current_page?(new_user_session_path) %>
+	    <div class="signin_form">
+	      <%= form_for("user", url: user_session_path, class: "form-inline") do |f| %>
+	      <%= f.text_field :login %>
+	      <%= f.password_field :password %>
+	      <%= f.submit "Log in", id: "submit_button"%>
+	      <% end -%>
+	    </div>
 	  <% end -%>
-	</div>
-	<% if !current_page?(new_user_registration_path) %>
-	  <ul class="nav">
-	    <li><%= link_to "Sign up", new_user_registration_path, {class: "button sign_up"} %></li>
-	  </ul>
-     	<% end -%>
+	  <% if !current_page?(new_user_registration_path) %>
+	    <ul class="nav">
+	      <li><%= link_to "Sign up", new_user_registration_path, {class: "button sign_up"} %></li>
+	    </ul>
+	  <% end -%>
      	<% end -%>
       </div>
     </div>
