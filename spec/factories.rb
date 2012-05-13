@@ -3,6 +3,7 @@ FactoryGirl.define do
     name "MyString"
     destination "MyString"
     arrival_time { 2.days.from_now }
+    user
   end
   factory :invitation do
     user

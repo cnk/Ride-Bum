@@ -45,7 +45,7 @@ Feature: Person signs up as an event planner
 	And he sees "Invalid login or password."
 
    Scenario: Describe event planners dashboard
-        Given "Tewan" is an event planner
+        Given "Tewan" is logged in as an event planner
         And he has created the "Graveyard pitstop" event
         And there is a "Boring" event
 	And he is on his dashboard page

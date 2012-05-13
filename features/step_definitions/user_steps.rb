@@ -3,11 +3,12 @@ Given /^"([^"]*)" is an event planner$/ do |event_planner_name|
 end
 
 Given /^"([^"]*)" is logged in as an event planner$/ do |event_planner_name|
-  @user = Factory(:user, username: event_planner_name)
+  @user = FactoryGirl.create(:user, username: event_planner_name)
   visit '/users/sign_in'
-  fill_in "user_login", :with=>@user.login
-  fill_in "user_password", :with=>"abc123"
+  fill_in "user_login", with: event_planner_name
+  fill_in "user_password", with: "abc123"
   click_button "Sign in"
+  page.should have_content("Signed in successfully."), "Should have seen the flash for signing in successfully."
 end
 
 Given /^he is not logged in$/ do

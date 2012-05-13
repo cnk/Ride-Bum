@@ -1,0 +1,14 @@
+class Invitation < ActiveRecord::Base
+  belongs_to :event
+  belongs_to :user
+  accepts_nested_attributes_for :user
+
+  # validates :event_id, presence: true
+  # validates :user_id,  presence: true
+
+  scope :unsent, where(email_sent: false)
+
+  def send_email
+    Notifier.invitation(self).deliver!
+  end
+end

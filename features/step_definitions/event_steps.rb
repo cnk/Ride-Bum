@@ -7,9 +7,7 @@ Given /^there is a "([^"]*)" event$/ do |event_name|
 end
 
 Given /^he has created the "([^"]*)" event$/ do |event_name|
-  @event = FactoryGirl.create(:event, name: event_name)
-puts "Create event without owner until we add user_id to events table"
-#  @event = FactoryGirl.create(:event, name: event_name, user: @user)
+  @event = FactoryGirl.create(:event, name: event_name, user: @user)
 end
 
 When /^he enters the destination "([^"]*)"$/ do |destination|

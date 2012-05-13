@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   # For invitees, we need a token they can authenticate with. Let's add that globally.
   before_save :ensure_authentication_token
 
+  # event planners own events
+  has_many :events
+
+  # invitees will have invitations
   has_many :invitations
 
   scope :invitees, joins(:invitations)
