@@ -26,28 +26,29 @@ describe EventsController do
   def valid_attributes
     { name: "Graveyard Run", destination: "Forest Lawn Cemetery", arrival_time: Time.now }
   end
+
+  before(:each) do
+    user = FactoryGirl.create(:user)
+    @event = FactoryGirl.create(:event, user: user)
+    login_as user
+  end
   
   describe "GET index" do
     it "assigns all events as @events" do
-      login_user
-      event = FactoryGirl.create(:event)
       get :index
-      assigns(:events).should eq([event])
+      assigns(:events).should eq([@event])
     end
   end
 
   describe "GET show" do
     it "assigns the requested event as @event" do
-      login_user
-      event = FactoryGirl.create(:event)
-      get :show, {:id => event.to_param}
-      assigns(:event).should eq(event)
+      get :show, {:id => @event.to_param}
+      assigns(:event).should eq(@event)
     end
   end
 
   describe "GET new" do
     it "assigns a new event as @event" do
-      login_user
       get :new
       assigns(:event).should be_a_new(Event)
     end
@@ -55,16 +56,12 @@ describe EventsController do
 
   describe "GET edit" do
     it "assigns the requested event as @event" do
-      login_user
-      event = FactoryGirl.create(:event)
-      get :edit, {:id => event.to_param}
-      assigns(:event).should eq(event)
+      get :edit, {:id => @event.to_param}
+      assigns(:event).should eq(@event)
     end
   end
 
   describe "POST create" do
-    before(:each) { login_user }
-
     describe "with valid params" do
       it "creates a new Event" do
         expect {
@@ -102,11 +99,6 @@ describe EventsController do
   end
 
   describe "PUT update" do
-    before(:each) do
-      @event = FactoryGirl.create(:event)
-      login_user
-    end
-      
     describe "with valid params" do
       it "updates the requested event" do
         Event.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
@@ -140,18 +132,14 @@ describe EventsController do
   end
 
   describe "DELETE destroy" do
-    before(:each) { login_user }
-
     it "destroys the requested event" do
-      event = FactoryGirl.create(:event)
       expect {
-        delete :destroy, {:id => event.to_param}
+        delete :destroy, {:id => @event.to_param}
       }.to change(Event, :count).by(-1)
     end
 
     it "redirects to the events list" do
-      event = FactoryGirl.create(:event)
-      delete :destroy, {:id => event.to_param}
+      delete :destroy, {:id => @event.to_param}
       response.should redirect_to(events_url)
     end
   end

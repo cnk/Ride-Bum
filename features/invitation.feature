@@ -5,7 +5,7 @@ Feature: event planner invites potential attendees
 
     Background:
         Given "George" is logged in as an event planner
-        And there is a "Graveyard pitstop" event
+        And he has created the "Graveyard pitstop" event
         And he is on the "Graveyard pitstop" event page
 
     Scenario: enter initial invitee list
