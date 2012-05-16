@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @invitation %> |
-<%= link_to 'Back', invitations_path %>
+<%= link_to 'Show', event_invitation_path(@event, @invitation) %> |
+<%= link_to 'Back', event_invitations_path(@event) %>

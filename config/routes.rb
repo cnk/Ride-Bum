@@ -1,6 +1,4 @@
 RideBum::Application.routes.draw do
-  resources :invitations
-
   resources :events do
     resources :invitations do
       get :send_emails, on: :collection

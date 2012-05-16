@@ -1,7 +1,6 @@
 class InvitationsController < ApplicationController
   before_filter :authenticate_user!
 
-
   # GET /invitations
   # GET /invitations.json
   def index
@@ -39,21 +38,23 @@ class InvitationsController < ApplicationController
 
   # GET /invitations/1/edit
   def edit
-    @invitation = Invitation.find(params[:id])
+    @invitation = Invitation.find(params[:id], include: :event )
+    @event = @invitation.event
   end
 
   # POST /invitations
   # POST /invitations.json
   def create
-    @invitation = Invitation.new(event_id: params[:invitation][:event_id].to_i)
+    @event = Event.find(params[:event_id].to_i)
+    @invitation = Invitation.new(event_id: @event.id)
     @invitation.user = User.new(params[:invitation][:user_attributes])
 
     respond_to do |format|
       if @invitation.save
-        format.html { redirect_to event_path(@invitation.event), notice: "#{@invitation.user.username} has been added" }
+        format.html { redirect_to event_path(@invitation.event_id), notice: "#{@invitation.user.username} has been added" }
         format.json { render json: @invitation, status: :created, location: @invitation }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", event_id: params[:invitation][:event_id].to_i }
         format.json { render json: @invitation.errors, status: :unprocessable_entity }
       end
     end
@@ -66,7 +67,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.user.update_attributes(params[:invitation][:user_attributes])
-        format.html { redirect_to @invitation, notice: 'Invitation was successfully updated.' }
+        format.html { redirect_to event_invitation_path(@invitation.event_id, @invitation.id), notice: 'Invitation was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -82,7 +83,7 @@ class InvitationsController < ApplicationController
     @invitation.destroy
 
     respond_to do |format|
-      format.html { redirect_to invitations_url }
+      format.html { redirect_to event_path(@invitation.event_id) }
       format.json { head :no_content }
     end
   end

@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe "invitations/new" do
+describe "invitations/edit" do
   before(:each) do
     @event = assign(:event, mock_model(Event,
                                        :name => "MyString",
                                        :destination => "MyString"
                                        ))
     @user = assign(:user, stub_model(User).as_new_record)
-    assign(:invitation, stub_model(Invitation, user: 
-                                   @user, 
-                                   event: @event).as_new_record)
+    @invitation = assign(:invitation, stub_model(Invitation, user: 
+                                                 @user, 
+                                                 event: @event))
   end
 
-  it "renders new invitation form" do
+  it "renders the edit invitation form" do
     render
 
-    assert_select "form", :action => event_invitations_path(@event.id), :method => "post" do
+    assert_select "form", :action => event_invitations_path(@event.id, @invitation), :method => "post" do
       assert_select "input#invitation_event_id", :name => "invitation[event_id]"
       assert_select "input#invitation_user_attributes_username", :name => "invitation[user_attributes][username]"
       assert_select "input#invitation_user_attributes_email", :name => "invitation[user_attributes][email]"
@@ -25,6 +25,12 @@ describe "invitations/new" do
 
   it "has a link back to the event page" do
     render
-    assert_select "a[href=?]", event_path(@event)
+    assert_select "a[href=?]", event_invitations_path(@event)
   end
+
+  it "has a link back to the invitation page" do
+    render
+    assert_select "a[href=?]", event_invitation_path(@event, @invitation)
+  end
+
 end
