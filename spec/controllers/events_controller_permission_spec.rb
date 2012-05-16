@@ -17,7 +17,15 @@ describe EventsController do
 
   context "as a guest user" do
     describe "may not access any event actions:" do
-      {"index" => "get", "show" => "get", "new" => "get", "create" => "put", "edit" => "get", "update" => "post", "destroy" => "delete"}.each do |action, method|
+      {"index" => "get", "new" => "get", "create" => "put"}.each do |action, method|
+        it "can't access the Event##{action} action" do
+          send(method, action)
+          response.should redirect_to(new_user_session_path)
+          flash[:alert].should eql("You need to sign in or sign up before continuing.")
+        end
+      end
+
+      {"show" => "get", "edit" => "get", "update" => "post", "destroy" => "delete"}.each do |action, method|
         it "can't access the Event##{action} action" do
           send(method, action, :id => @event.id)
           response.should redirect_to(new_user_session_path)
