@@ -6,6 +6,10 @@ class Ability
 
     # Event planners can manage events - but only those belonging to them
     can :manage, Event, :user_id => user.id
+    # TODO update Event#show permission so invitees can see event too
+
+    can :manage, Invitation, :event => { :user_id => user.id }
+
     
     # Define abilities for the passed in user here. For example:
     #

@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :event_id, :user
+  attr_accessible :event_id, :user, :user_attributes
 
   belongs_to :event
   belongs_to :user

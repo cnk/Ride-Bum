@@ -1,5 +1,7 @@
 class InvitationsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource :event
+  authorize_resource :invitation, :through => :event
 
   # GET /invitations
   # GET /invitations.json
