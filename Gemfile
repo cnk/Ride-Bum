@@ -17,6 +17,7 @@ end
 group :development do
   gem "pry"
   gem "pry-rails"
+  gem "quiet_assets"
 end
 
 group :test, :cucumber, :development do
