@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20120513044545
+#
+# Table name: invitations
+#
+#  id         :integer         not null, primary key
+#  event_id   :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  email_sent :boolean         default(FALSE)
+#  user_id    :integer
+#
+
 class Invitation < ActiveRecord::Base
   attr_accessible :event_id, :user, :user_attributes
 

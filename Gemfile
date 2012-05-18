@@ -18,6 +18,7 @@ group :development do
   gem "pry"
   gem "pry-rails"
   gem "quiet_assets"
+  gem 'annotate', '~> 2.4.1.beta'
 end
 
 group :test, :cucumber, :development do

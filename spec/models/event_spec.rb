@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20120513044545
+#
+# Table name: events
+#
+#  id           :integer         not null, primary key
+#  name         :string(255)
+#  destination  :string(255)
+#  arrival_time :datetime
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
+#  user_id      :integer
+#
+
 require 'spec_helper'
 
 describe Event do
