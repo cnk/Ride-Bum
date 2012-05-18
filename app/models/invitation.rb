@@ -12,8 +12,6 @@
 #
 
 class Invitation < ActiveRecord::Base
-  attr_accessible :event_id, :user, :user_attributes
-
   belongs_to :event
   belongs_to :user
   accepts_nested_attributes_for :user

@@ -3,10 +3,9 @@ class InvitationsController < ApplicationController
   load_and_authorize_resource :event
   authorize_resource :invitation, :through => :event
 
-  # GET /invitations
-  # GET /invitations.json
+  # GET /events/3/invitations
+  # GET /events/3/invitations.json
   def index
-    @event = Event.find(params[:event_id])
     @invitations = @event.invitations
 
     respond_to do |format|
@@ -15,10 +14,10 @@ class InvitationsController < ApplicationController
     end
   end
 
-  # GET /invitations/1
-  # GET /invitations/1.json
+  # GET /events/3/invitations/1
+  # GET /events/3/invitations/1.json
   def show
-    @invitation = Invitation.find(params[:id], include: :event )
+    @invitation = Invitation.find(params[:id] )
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,11 +25,11 @@ class InvitationsController < ApplicationController
     end
   end
 
-  # GET /invitations/new
-  # GET /invitations/new.json
+  # GET /events/3/invitations/new
+  # GET /events/3/invitations/new.json
   def new
-    @event = Event.find(params[:event_id])
-    @invitation = Invitation.new(event_id: @event.id, user: User.new)
+    @invitation = @event.invitations.build()
+    @invitation.user = User.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,17 +37,15 @@ class InvitationsController < ApplicationController
     end
   end
 
-  # GET /invitations/1/edit
+  # GET /events/3/invitations/1/edit
   def edit
     @invitation = Invitation.find(params[:id], include: :event )
-    @event = @invitation.event
   end
 
-  # POST /invitations
-  # POST /invitations.json
+  # POST /events/3/invitations
+  # POST /events/3/invitations.json
   def create
-    @event = Event.find(params[:event_id].to_i)
-    @invitation = Invitation.new(event_id: @event.id)
+    @invitation = @event.invitations.build()
     @invitation.user = User.new(params[:invitation][:user_attributes])
 
     respond_to do |format|
@@ -62,8 +59,8 @@ class InvitationsController < ApplicationController
     end
   end
 
-  # PUT /invitations/1
-  # PUT /invitations/1.json
+  # PUT /events/3/invitations/1
+  # PUT /events/3/invitations/1.json
   def update
     @invitation = Invitation.find(params[:id])
 
@@ -78,8 +75,8 @@ class InvitationsController < ApplicationController
     end
   end
 
-  # DELETE /invitations/1
-  # DELETE /invitations/1.json
+  # DELETE /events/3/invitations/1
+  # DELETE /events/3/invitations/1.json
   def destroy
     @invitation = Invitation.find(params[:id])
     @invitation.destroy
@@ -90,6 +87,7 @@ class InvitationsController < ApplicationController
     end
   end
 
+  # GET /events/3/invitations/send_emails
   def send_emails
     @event = Event.find(params[:event_id])
     email_results = @event.invitations.unsent.map(&:send_email)

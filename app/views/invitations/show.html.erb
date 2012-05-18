@@ -16,9 +16,9 @@
 
 <p>
   <b>Event:</b>
-  <%= link_to @invitation.event.name, event_path(@invitation.event) %>
+  <%= link_to @event.name, event_path(@event) %>
 </p>
 
 
-<%= link_to 'Edit', edit_event_invitation_path(@invitation.event_id, @invitation.id) %> 
+<%= link_to 'Edit', edit_event_invitation_path(@event.id, @invitation.id) %> 
 
