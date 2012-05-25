@@ -6,6 +6,10 @@ When /^he clicks (on )?"([^"]*)"$/ do |placeholder, text|
   click_on text
 end
 
+Then /^he should see "([^"]*)"$/ do |text|
+  page.should have_content(text)
+end
+
 Then /^he sees "([^"]*)"$/ do |text|
   page.should have_content(text)
 end

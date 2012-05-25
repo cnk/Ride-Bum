@@ -22,17 +22,6 @@ Feature: Person signs up as an event planner
 	Then he sees "Listing events"
 	And he sees "Signed in successfully."
 
-   Scenario: Sign in existing event planner
-        Given "Tewan" is an event planner
-	And he is not logged in
-	When he goes to the home page
-	Then he sees information about Ride Bum
-	When he fills in "user_login" with "Tewan"
-	And he fills in "user_password" with "abc123"
-	And he clicks on "Log in" 
-	Then he sees "Listing events"
-	And he sees "Signed in successfully."
-
    Scenario: Try to sign in with a bad password
         Given "Tewan" is an event planner
 	And he is not logged in

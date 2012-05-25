@@ -10,6 +10,11 @@ Given /^he has created the "([^"]*)" event$/ do |event_name|
   @event = FactoryGirl.create(:event, name: event_name, user: @user)
 end
 
+Then /^"(.*?)" has created the "(.*?)" event$/ do |event_planner_name, event_name|
+  user = FactoryGirl.create(:user, username: event_planner_name)
+  @event = FactoryGirl.create(:event, name: event_name, user: user)
+end
+
 When /^he enters the destination "([^"]*)"$/ do |destination|
   fill_in "Destination", with: destination
 end
@@ -28,7 +33,7 @@ When /^he enters the start date and time "([^"]*)"$/ do |datetime|
   # datetime selection
 end
 
-Then /^he is on the event's page$/ do
-  # which event?  we have no event variable at this point
-  Event.last
+Then /^he should be on the "([^"]*)" event page$/ do |event_name|
+  event = Event.find_by_name(event_name)
+  current_path.should == event_path(event.id)
 end
