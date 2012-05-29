@@ -4,11 +4,12 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
-    # Event planners can manage events - but only those belonging to them
+    # Event planners can manage events and invitations - but only for their own events
     can :manage, Event, :user_id => user.id
-    # TODO update Event#show permission so invitees can see event too
-
     can :manage, Invitation, :event => { :user_id => user.id }
+
+    # invitees can see the events#show page for their event
+    can :read, Event, :invitations => { :user_id => user.id }
 
     
     # Define abilities for the passed in user here. For example:

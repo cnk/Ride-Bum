@@ -42,6 +42,6 @@ When /^"(.*?)" clicks on the link in the invitation email$/ do |invitee_name|
   invitation = Invitation.find_by_user_id!(user.id)
   # get the email that was sent and parse the link out of the body
   open_email(user.email)
-  current_email.default_part_body.to_s[/http:\/\/localhost:3000([\/\?\w]*)/]
+  current_email.default_part_body.to_s[/http:\/\/localhost:3000([=\/\?\w]*)/]
   visit $1
 end

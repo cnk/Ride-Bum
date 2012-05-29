@@ -12,7 +12,7 @@
 #
 
 class Invitation < ActiveRecord::Base
-  belongs_to :event
+  belongs_to :event, dependent: :destroy 
   belongs_to :user
   accepts_nested_attributes_for :user
 
