@@ -21,5 +21,6 @@ class Event < ActiveRecord::Base
   validates :user_id,       presence: true
 
   belongs_to :user
-  has_many :invitations
+  has_many :invitations, dependent: :destroy
+  has_many :invitees, through: :invitations, source: :user
 end

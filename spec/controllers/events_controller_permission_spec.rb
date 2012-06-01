@@ -80,4 +80,35 @@ describe EventsController do
     end
   end
 
+  context "as someone invited to an  event" do
+    describe "can only access the show page for their event:" do
+      before(:each) { 
+        invitation = FactoryGirl.create(:invitation, event:@event)
+        login_as invitation.user 
+      }
+      
+      it "can access the Event#show action" do
+        get :show, :id => @event.id
+        response.should be_success
+        assigns(:event).should eq(@event)
+      end
+
+      {"index" => "get", "new" => "get", "create" => "put"}.each do |action, method|
+        it "can not access the Event##{action} action" do
+          send(method, action)
+          response.should redirect_to(root_path)
+          flash[:alert].should eql("You are not authorized to access this page.")
+        end
+      end
+
+      {"edit" => "get", "update" => "post", "destroy" => "delete"}.each do |action, method|
+        it "can not access the Event##{action} action" do
+          send(method, action, :id => @event.id)
+          response.should redirect_to(root_path)
+          flash[:alert].should eql("You are not authorized to access this page.")
+        end
+      end
+    end
+  end
+
 end
