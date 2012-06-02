@@ -54,6 +54,12 @@ class User < ActiveRecord::Base
     self.invitations.size > 0
   end
 
+  # Later we may use some other criteria to distinguish event planners
+  # But for now, event planners have passwords and invitees don't
+  def is_an_event_planner?
+    !self.encrypted_password.blank?
+  end
+
   protected
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

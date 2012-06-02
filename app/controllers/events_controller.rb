@@ -5,7 +5,10 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(["user_id = ?", current_user.id]).all
+    # ensure current user is an event planner
+    authorize! :index, Event
+    # Then pull out just his events
+    @events = Event.where(["user_id = ?", current_user]).all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }

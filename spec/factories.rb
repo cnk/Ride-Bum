@@ -6,18 +6,24 @@ FactoryGirl.define do
     user
   end
   factory :invitation do
-    user
+    association :user, factory: :invitee
     event
   end
   factory :user do
-    sequence :phone, 1000000000 do |n|
-      n.to_s
-    end
-    email { "#{username}@example.com" }
     sequence :username, 1000 do
       "username_#{n}"
     end
+    email { "#{username}@example.com" }
     password { "abc123" }
     password_confirmation { "abc123" }
+  end
+  factory :invitee, class: User do
+    sequence :phone, 1000000000 do |n|
+      n.to_s
+    end
+    sequence :username, 1000 do
+      "username_#{n}"
+    end
+    email { "#{username}@example.com" }
   end
 end
