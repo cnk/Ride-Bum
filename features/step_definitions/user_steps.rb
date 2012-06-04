@@ -20,11 +20,13 @@ Given /^he is on his dashboard page$/ do
 end
 
 When /^he fills out the new user form$/ do
-  steps %Q{And he fills in "Username" with "gw"
-  And he fills in "Email" with "gw@example.com"
-  And he fills in "Password" with "abc123"
-  And he fills in "Password confirmation" with "abc123"
-  And he submits the sign up form}
+  within("#new_user") do
+    fill_in "Username", :with => "gw"
+    fill_in "Email", :with => "gw@example.com"
+    fill_in "Password", :with => "abc123"
+    fill_in "Password confirmation", :with => "abc123"
+    click_button "Sign up"
+  end
 end
 
 When /^he submits the sign up form$/ do
