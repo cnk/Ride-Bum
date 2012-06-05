@@ -1,21 +1,19 @@
 <h1>Listing events</h1>
 
-<table>
+<table id="event_list">
   <tr>
     <th>Name</th>
     <th>Destination</th>
     <th>Arrival time</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @events.each do |event| %>
   <tr>
-    <td><%= event.name %></td>
+    <td><%= link_to event.name, event %></td>
     <td><%= event.destination %></td>
-    <td><%= event.arrival_time %></td>
-    <td><%= link_to 'Show', event %></td>
+    <td><%= event.arrival_time.to_s %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Delete', event, confirm: 'Are you sure?', method: :delete %></td>
   </tr>

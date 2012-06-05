@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @event.name %>
@@ -15,7 +13,9 @@
   <%= @event.arrival_time %>
 </p>
 
-<%= link_to "Enter Guests", new_event_invitation_path(@event.id) %> |
-<%= link_to 'Send email to all invitees', send_emails_event_invitations_path(@event.id) %><br />
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<% if can? :update, @event %>
+  <%= link_to "Enter Guests", new_event_invitation_path(@event.id) %> |
+  <%= link_to 'Send email to all invitees', send_emails_event_invitations_path(@event.id) %><br />
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+  <%= link_to 'All events', events_path %>
+<% end %>

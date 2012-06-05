@@ -21,12 +21,12 @@ group :development do
   gem 'annotate', '~> 2.4.1.beta'
 end
 
-group :test, :cucumber, :development do
+group :test, :development do
   gem "rspec-rails"
-  gem "cucumber-rails"
 end
 
-group :test, :cuucmber do
+group :test do
+  gem "cucumber-rails"
   gem "database_cleaner"
   gem "spork"
   gem "guard-rspec"
