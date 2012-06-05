@@ -9,13 +9,11 @@ Feature: event planner invites potential attendees
         And he is on the "Graveyard pitstop" event page
 
     Scenario: enter initial invitee list
-        When he clicks on "Enter Guests"
         And he fills in "Name" with "Rob Zombie"
         And he fills in "Email" with "rob@zombie.com"
         And he fills in "Phone" with "9876543210"
         And he clicks "Create Invitation"
         Then he should see "Rob Zombie has been added"
-        When he clicks on "Enter Guests"
         And he fills in "Name" with "Greg Zombie"
         And he fills in "Email" with "greg@zombie.com"
         And he fills in "Phone" with "9876543211"
@@ -48,7 +46,6 @@ Feature: event planner invites potential attendees
             | Rob Zombie  | rob@zombie.com  | 9876543210 |
             | Greg Zombie | greg@zombie.com | 9876543211 |
         And they have already received email invitations
-        When he clicks on "Enter Guests"
         And he fills in "Name" with "Sarah Zombie"
         And he fills in "Email" with "sarah@zombie.com"
         And he fills in "Phone" with "9876543212"

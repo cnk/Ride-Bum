@@ -19,7 +19,12 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {
+        @invitations = @event.invitations
+        # need to set up some variables for the new invitation form
+        @invitation = @event.invitations.build()
+        @invitation.user = User.new
+      }
       format.json { render json: @event }
     end
   end
