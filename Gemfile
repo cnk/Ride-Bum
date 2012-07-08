@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.6'
 gem 'sqlite3'
 gem 'devise'
 gem 'cancan'
@@ -22,7 +22,7 @@ group :development do
 end
 
 group :test, :development do
-  gem "rspec-rails"
+  gem "rspec-rails", '~> 2.11.0'
 end
 
 group :test do

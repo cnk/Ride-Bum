@@ -19,7 +19,7 @@
     <td><%= invitation.event_id %></td>
     <td><%= link_to 'Show', event_invitation_path(invitation.event_id, invitation.id) %></td>
     <td><%= link_to 'Edit', edit_event_invitation_path(invitation.event_id, invitation.id) %></td>
-    <td><%= link_to 'Destroy', { controller: "invitations", action: "destroy", id: invitation.id, event_id: invitation.event_id }, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', { controller: "invitations", action: "destroy", id: invitation.id, event_id: invitation.event_id }, data: {confirm: 'Are you sure?'}, method: :delete %></td>
   </tr>
 <% end %>
 </table>

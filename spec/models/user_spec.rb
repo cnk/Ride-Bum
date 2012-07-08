@@ -37,7 +37,7 @@ describe User do
   it "should not allow encrypted_password to be changed by mass_assignment" do
     expect do
       User.new(encrypted_password: "password")
-    end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
   end
 
   it "should allow token authentication" do

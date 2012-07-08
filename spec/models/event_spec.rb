@@ -41,7 +41,7 @@ describe Event do
   it "should not allow user_id to be changed by mass_assignment" do
     expect do
       Event.new(user_id: 1)
-    end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
   end
 
   it "should belong to a user" do

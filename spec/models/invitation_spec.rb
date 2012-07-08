@@ -29,13 +29,13 @@ describe Invitation do
   it "should not allow event_id to be changed by mass_assignment" do
     expect do
       Invitation.new(event_id: 1)
-    end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
   end
 
   it "should not allow user_id to be changed by mass_assignment" do
     expect do
       Invitation.new(user_id: 1)
-    end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
   end
 
 end

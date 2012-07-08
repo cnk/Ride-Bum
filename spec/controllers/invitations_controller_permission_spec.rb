@@ -26,7 +26,7 @@ describe InvitationsController do
     describe "may not access any invitation actions:" do
       {"index" => "get", "new" => "get", "create" => "put"}.each do |action, method|
         it "can't access the Invitation##{action} action" do
-          send(method, action)
+          send(method, action, :event_id => @event.id)
           response.should redirect_to(new_user_session_path)
           flash[:alert].should eql("You need to sign in or sign up before continuing.")
         end
