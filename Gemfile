@@ -18,6 +18,7 @@ group :development do
   gem "pry"
   gem "pry-rails"
   gem "quiet_assets"
+  gem "thin"
   gem 'annotate', '~> 2.4.1.beta'
 end
 
@@ -35,6 +36,7 @@ group :test do
   gem "guard-spork"
   gem "email_spec"
   gem "factory_girl_rails"
+  gem "cover_me", '>= 1.2.0'
 end
 
 group :production do

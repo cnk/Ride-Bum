@@ -46,6 +46,9 @@ class User < ActiveRecord::Base
   # invitees will have invitations
   has_many :invitations
 
+  # Invitees can offer rides for an events
+  has_many :rides, foreign_key: :driver_id
+
   scope :invitees, joins(:invitations)
 
   # Sadly, we can't use this while creating a user to see if we need a

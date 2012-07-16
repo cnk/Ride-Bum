@@ -23,4 +23,5 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :invitations, dependent: :destroy
   has_many :invitees, through: :invitations, source: :user
+  has_many :rides, dependent: :destroy
 end

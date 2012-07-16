@@ -22,3 +22,10 @@
 # Explicitly ignore files that should be automatically ignored
 *~
 *.bak
+
+# Ignore project helper file for KomodoEdit
+*.komodoproject
+
+# ignore cover_me coverage output
+coverage.data
+coverage/*

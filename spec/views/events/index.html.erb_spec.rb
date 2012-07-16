@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe "events/index" do
   before(:each) do
-      @event = stub_model(Event,
-                          :name => "Name",
-                          :destination => "Destination"
-                          )
+    @event = stub_model(Event,
+                        :name => "Name",
+                        :destination => "Destination"
+                        )
     @another = stub_model(Event,
                           :name => "Name",
                           :destination => "Destination"

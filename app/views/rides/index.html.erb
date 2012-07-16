@@ -1,0 +1,27 @@
+<h1>Listing rides</h1>
+
+<table>
+  <tr>
+    <th>Event</th>
+    <th>Driver</th>
+    <th>Free seats</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rides.each do |ride| %>
+  <tr>
+    <td><%= ride.event.name %></td>
+    <td><%= ride.driver.username %></td>
+    <td><%= ride.free_seats %></td>
+    <td><%= link_to 'Show', event_ride_path(@event, ride) %></td>
+    <td><%= link_to 'Edit', edit_event_ride_path(@event, ride) %></td>
+    <td><%= link_to 'Destroy', event_ride_path(@event, ride), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ride', new_event_ride_path(@event) %>
