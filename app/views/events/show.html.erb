@@ -18,6 +18,13 @@
   <%= render @invitations %>
 </table>
 
+<h3>Carpools</h3>
+<ul id="carpools">
+  <%= render @event.rides %>
+</ul>
+
+
+<%= link_to "I'll drive", new_event_ride_path(@event) %>
 
 <% if can? :update, @event %>
   <h3>Add a guest</h3>
