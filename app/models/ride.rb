@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: rides
+#
+#  id         :integer         not null, primary key
+#  event_id   :integer
+#  driver_id  :integer
+#  free_seats :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 class Ride < ActiveRecord::Base
   attr_accessible :free_seats
 
