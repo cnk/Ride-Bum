@@ -1,6 +1,8 @@
 class RidesController < ApplicationController
   before_filter :authenticate_user!
-  load_resource :event
+  load_and_authorize_resource :event
+  # CNK having trouble getting the CanCan permissions working
+  # authorize_resource :ride, :through => :event
 
   # GET /events/1/rides
   # GET /events/1/rides.json
