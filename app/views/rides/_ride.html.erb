@@ -1,6 +1,8 @@
 <li>Carpool #<%= ride.id %>
   <ul>
-    <li>Driver: <%= ride.driver.username %></li>
-    <li>Passenger:</li>
+    <li class="driver">Driver: <%= ride.driver.username %></li>
+    <% ride.free_seats.times do %>
+    <li class="passenger">Passenger:</li>
+    <% end %>
   </ul>
 </li>
